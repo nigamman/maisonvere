@@ -4,20 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Journal | Maison Veré</title>
+
+  <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
     }
     h1, h2, h3, .serif {
       font-family: 'Cormorant Garamond', serif;
     }
+    .card {
+      perspective: 1000px;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      transform-style: preserve-3d;
+    }
+    .card:hover {
+      transform: rotateY(6deg) rotateX(3deg) scale(1.015);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
   </style>
 </head>
+
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]" data-aos="fade-down">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
     <nav class="hidden md:flex gap-6 text-sm">
       <a href="home.html" class="hover:underline">Home</a>
@@ -29,14 +47,14 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="text-center py-20 bg-[#EFE8E2]">
+  <section class="text-center py-20 bg-[#EFE8E2]" data-aos="fade-up">
     <h1 class="serif text-5xl font-bold mb-4">Journal</h1>
     <p class="max-w-xl mx-auto text-lg italic">Stories, insights & the quiet rhythm of craftsmanship.</p>
   </section>
 
   <!-- Article Grid -->
   <section class="px-6 py-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div class="bg-white rounded-2xl shadow overflow-hidden">
+    <div class="card bg-white rounded-2xl shadow overflow-hidden" data-aos="fade-up" data-aos-delay="100">
       <img src="images/journal1.jpg" alt="Journal Entry 1" class="w-full h-56 object-cover">
       <div class="p-4">
         <h2 class="serif text-xl mb-2">How a Bag Becomes Legacy</h2>
@@ -44,7 +62,7 @@
         <a href="#" class="text-sm underline">Read More</a>
       </div>
     </div>
-    <div class="bg-white rounded-2xl shadow overflow-hidden">
+    <div class="card bg-white rounded-2xl shadow overflow-hidden" data-aos="fade-up" data-aos-delay="200">
       <img src="images/journal2.jpg" alt="Journal Entry 2" class="w-full h-56 object-cover">
       <div class="p-4">
         <h2 class="serif text-xl mb-2">The French Connection</h2>
@@ -52,7 +70,7 @@
         <a href="#" class="text-sm underline">Read More</a>
       </div>
     </div>
-    <div class="bg-white rounded-2xl shadow overflow-hidden">
+    <div class="card bg-white rounded-2xl shadow overflow-hidden" data-aos="fade-up" data-aos-delay="300">
       <img src="images/journal3.jpg" alt="Journal Entry 3" class="w-full h-56 object-cover">
       <div class="p-4">
         <h2 class="serif text-xl mb-2">Caring for Your Leather</h2>
@@ -63,9 +81,19 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+  <footer class="bg-[#4B2E2A] text-white text-center py-8" data-aos="fade-up">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
     <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+    <p class="text-xs mt-2 opacity-50">© Maison Veré 2025. All rights reserved.</p>
   </footer>
+
+  <!-- AOS Init -->
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
 </body>
 </html>

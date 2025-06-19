@@ -4,20 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Maison Veré</title>
+  
+  <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
     }
-    h1, h2, .serif {
+    h1, h2, h3, .serif {
       font-family: 'Cormorant Garamond', serif;
+    }
+    .parallax-container {
+      position: relative;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 150%;
+      background-image: url('images/parallax-texture.jpg'); /* subtle texture */
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      opacity: 0.07;
+      z-index: 0;
+    }
+    .parallax-content {
+      position: relative;
+      z-index: 1;
+    }
+    .btn-hover {
+      transition: all 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    .btn-hover:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
   </style>
 </head>
+
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
+
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]" data-aos="fade-down">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
     <nav class="hidden md:flex gap-6 text-sm">
       <a href="home.html" class="hover:underline">Home</a>
@@ -29,53 +69,66 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="text-center py-20 bg-[#EFE8E2]">
+  <section class="text-center py-20 bg-[#EFE8E2]" data-aos="fade-up">
     <h1 class="serif text-5xl font-bold mb-4">Contact Us</h1>
     <p class="max-w-xl mx-auto text-lg italic">We’d love to hear from you — whether it’s feedback, press, or partnership.</p>
   </section>
 
   <!-- Contact Form & Info -->
   <section class="max-w-4xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10">
-    <form class="space-y-4">
+    <form class="space-y-4" data-aos="fade-right">
       <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-xl border border-[#D6CFCB] bg-white" required>
       <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-xl border border-[#D6CFCB] bg-white" required>
       <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-2 rounded-xl border border-[#D6CFCB] bg-white" required></textarea>
-      <button type="submit" class="bg-[#4B2E2A] text-white px-6 py-3 rounded-xl text-sm hover:opacity-90">Send Message</button>
+      <button type="submit" class="btn-hover bg-[#4B2E2A] text-white px-6 py-3 rounded-xl text-sm">Send Message</button>
     </form>
-    <div class="text-sm leading-7">
+    <div class="text-sm leading-7" data-aos="fade-left">
       <p><strong>Maison Veré Atelier</strong><br>Kanpur, Uttar Pradesh, India</p>
       <p class="mt-6">Email: hello@maisonvere.in<br>Phone: +91 98765 43210</p>
       <p class="mt-6">We typically respond within 24–48 hours.</p>
     </div>
   </section>
 
-  <!-- Team Section -->
-  <section class="bg-white py-16 px-6">
-    <h2 class="serif text-3xl text-center mb-12">Our Team</h2>
-    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-      <div>
-        <h3 class="serif text-xl font-semibold">Kartikey Nigam</h3>
-        <p class="text-sm">Creative Director & Co-Founder</p>
-      </div>
-      <div>
-        <h3 class="serif text-xl font-semibold">Tushar Nigam</h3>
-        <p class="text-sm">Operations & Production</p>
-      </div>
-      <div>
-        <h3 class="serif text-xl font-semibold">Mahima Nigam</h3>
-        <p class="text-sm">Brand & Visual Strategy</p>
-      </div>
-      <div>
-        <h3 class="serif text-xl font-semibold">Shivansh Nigam</h3>
-        <p class="text-sm">Technical Head</p>
+  <!-- Team Section with Parallax -->
+  <section class="parallax-container py-16 px-6">
+    <div class="parallax-bg"></div>
+    <div class="parallax-content">
+      <h2 class="serif text-3xl text-center mb-12" data-aos="fade-up">Our Team</h2>
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+        <div data-aos="zoom-in-up" data-aos-delay="100">
+          <h3 class="serif text-xl font-semibold">Kartikey Nigam</h3>
+          <p class="text-sm">Creative Director & Co-Founder</p>
+        </div>
+        <div data-aos="zoom-in-up" data-aos-delay="200">
+          <h3 class="serif text-xl font-semibold">Tushar Nigam</h3>
+          <p class="text-sm">Operations & Production</p>
+        </div>
+        <div data-aos="zoom-in-up" data-aos-delay="300">
+          <h3 class="serif text-xl font-semibold">Mahima Nigam</h3>
+          <p class="text-sm">Brand & Visual Strategy</p>
+        </div>
+        <div data-aos="zoom-in-up" data-aos-delay="400">
+          <h3 class="serif text-xl font-semibold">Shivansh Nigam</h3>
+          <p class="text-sm">Technical Head</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+  <footer class="bg-[#4B2E2A] text-white text-center py-8" data-aos="fade-up">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
     <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+    <p class="text-xs mt-2 opacity-50">© Maison Veré 2025. All rights reserved.</p>
   </footer>
+
+  <!-- AOS Init -->
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
 </body>
 </html>
