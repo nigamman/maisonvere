@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritage Satchel | Maison Veré</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+  </style>
+</head>
+<body class="bg-[#FAF5F2] text-[#4B2E2A]">
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="home.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="journal.html" class="hover:underline">Journal</a>
+      <a href="#" class="hover:underline">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Product Detail -->
+  <section class="px-6 py-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div>
+      <img src="images/bag1.png" alt="The Heritage Satchel" class="w-full h-auto rounded-xl shadow" />
+    </div>
+    <div class="flex flex-col justify-center">
+      <h1 class="serif text-4xl font-bold mb-4">The Heritage Satchel</h1>
+      <p class="text-xl mb-2">₹13,999</p>
+      <p class="mb-6 text-sm">
+        Crafted from rich full-grain leather, the Heritage Satchel is designed for those who value detail and durability. With timeless lines and modern functionality, it carries stories, not just essentials.
+      </p>
+      <ul class="text-sm mb-6 list-disc list-inside space-y-2">
+        <li>Hand-stitched from 100% full-grain leather</li>
+        <li>Solid brass buckle closures</li>
+        <li>Cotton-lined interior with laptop compartment</li>
+        <li>Designed in Kanpur. Inspired by Paris.</li>
+      </ul>
+      <button class="bg-[#4B2E2A] text-white px-6 py-3 text-sm rounded-xl w-fit hover:opacity-90">Add to Bag</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
+    <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+  </footer>
+</body>
+</html>

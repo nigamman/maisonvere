@@ -6,6 +6,7 @@
   <title>Maison Veré | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/animations.css">
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -17,25 +18,25 @@
 </head>
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
   <!-- Header with Logo -->
-  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2] fade-in-slow">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
     <nav class="hidden md:flex gap-6 text-sm">
       <a href="home.html" class="hover:underline font-semibold">Home</a>
       <a href="about.html" class="hover:underline">About</a>
-      <a href="#" class="hover:underline">Shop</a>
-      <a href="#" class="hover:underline">Journal</a>
-      <a href="#" class="hover:underline">Contact</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="journal.html" class="hover:underline">Journal</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="h-screen flex flex-col items-center justify-center text-center px-6">
-    <h1 class="serif text-4xl md:text-5xl font-semibold mb-4">Maison Veré</h1>
-    <p class="text-lg md:text-xl italic max-w-xl">You don’t carry it. You carry yourself.</p>
+    <h1 class="serif text-4xl md:text-5xl font-semibold mb-4 fade-in-up">Maison Veré</h1>
+    <p class="text-lg md:text-xl italic max-w-xl fade-in-up-delayed">You don’t carry it. You carry yourself.</p>
   </section>
 
   <!-- Manifesto Section -->
-  <section class="px-6 py-20 bg-[#EFE8E2] text-center">
+  <section class="px-6 py-20 bg-[#EFE8E2] text-center fade-in-slow">
     <h2 class="serif text-3xl md:text-4xl font-semibold mb-6">Our Manifesto</h2>
     <p class="max-w-3xl mx-auto text-lg leading-8">
       We believe true luxury doesn't shout — it lingers. It's not about more. It's about meaning.<br />
@@ -46,24 +47,24 @@
 
   <!-- Product Teaser Section -->
   <section class="px-6 py-16">
-    <h2 class="serif text-3xl mb-8 text-center">Explore the Collection</h2>
+    <h2 class="serif text-3xl mb-8 text-center fade-in-up">Explore the Collection</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="bag1.jpg" alt="Bag 1" class="w-full h-80 object-cover">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden zoom-on-hover fade-in-up">
+        <img src="images/bag1.png" alt="Bag 1" class="w-full h-80 object-cover">
         <div class="p-4">
           <h3 class="serif text-xl mb-2">The Heritage Satchel</h3>
           <p class="text-sm">Crafted from full-grain leather with brass hardware.</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="bag2.jpg" alt="Bag 2" class="w-full h-80 object-cover">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden zoom-on-hover fade-in-up">
+        <img src="images/bag2.png" alt="Bag 2" class="w-full h-80 object-cover">
         <div class="p-4">
           <h3 class="serif text-xl mb-2">The Artisan Tote</h3>
           <p class="text-sm">Minimalist structure with timeless curves.</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="bag3.jpg" alt="Bag 3" class="w-full h-80 object-cover">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden zoom-on-hover fade-in-up">
+        <img src="images/bag3.png" alt="Bag 3" class="w-full h-80 object-cover">
         <div class="p-4">
           <h3 class="serif text-xl mb-2">The Studio Brief</h3>
           <p class="text-sm">Designed for work and beyond.</p>
@@ -73,8 +74,8 @@
   </section>
 
   <!-- Footer CTA -->
-  <footer class="bg-[#4B2E2A] text-white text-center py-8">
-    <img src="demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
+  <footer class="bg-[#4B2E2A] text-white text-center py-8 fade-in-slow">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
     <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
   </footer>
 </body>

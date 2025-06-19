@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal | Maison Veré</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF5F2] text-[#4B2E2A]">
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="home.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="journal.html" class="hover:underline font-semibold">Journal</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-[#EFE8E2]">
+    <h1 class="serif text-5xl font-bold mb-4">Journal</h1>
+    <p class="max-w-xl mx-auto text-lg italic">Stories, insights & the quiet rhythm of craftsmanship.</p>
+  </section>
+
+  <!-- Article Grid -->
+  <section class="px-6 py-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white rounded-2xl shadow overflow-hidden">
+      <img src="images/journal1.jpg" alt="Journal Entry 1" class="w-full h-56 object-cover">
+      <div class="p-4">
+        <h2 class="serif text-xl mb-2">How a Bag Becomes Legacy</h2>
+        <p class="text-sm mb-4">Behind the scenes at our Kanpur atelier, where leather breathes and brass lives forever.</p>
+        <a href="#" class="text-sm underline">Read More</a>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow overflow-hidden">
+      <img src="images/journal2.jpg" alt="Journal Entry 2" class="w-full h-56 object-cover">
+      <div class="p-4">
+        <h2 class="serif text-xl mb-2">The French Connection</h2>
+        <p class="text-sm mb-4">Why Maison Veré channels Parisian restraint in every silhouette it draws.</p>
+        <a href="#" class="text-sm underline">Read More</a>
+      </div>
+    </div>
+    <div class="bg-white rounded-2xl shadow overflow-hidden">
+      <img src="images/journal3.jpg" alt="Journal Entry 3" class="w-full h-56 object-cover">
+      <div class="p-4">
+        <h2 class="serif text-xl mb-2">Caring for Your Leather</h2>
+        <p class="text-sm mb-4">Our no-nonsense guide to keeping your Maison Veré bag in perfect condition.</p>
+        <a href="#" class="text-sm underline">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
+    <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+  </footer>
+</body>
+</html>

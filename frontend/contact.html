@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Maison Veré</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF5F2] text-[#4B2E2A]">
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="home.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="journal.html" class="hover:underline">Journal</a>
+      <a href="contact.html" class="hover:underline font-semibold">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-[#EFE8E2]">
+    <h1 class="serif text-5xl font-bold mb-4">Contact Us</h1>
+    <p class="max-w-xl mx-auto text-lg italic">We’d love to hear from you — whether it’s feedback, press, or partnership.</p>
+  </section>
+
+  <!-- Contact Form & Info -->
+  <section class="max-w-4xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10">
+    <form class="space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-xl border border-[#D6CFCB] bg-white" required>
+      <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-xl border border-[#D6CFCB] bg-white" required>
+      <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-2 rounded-xl border border-[#D6CFCB] bg-white" required></textarea>
+      <button type="submit" class="bg-[#4B2E2A] text-white px-6 py-3 rounded-xl text-sm hover:opacity-90">Send Message</button>
+    </form>
+    <div class="text-sm leading-7">
+      <p><strong>Maison Veré Atelier</strong><br>Kanpur, Uttar Pradesh, India</p>
+      <p class="mt-6">Email: hello@maisonvere.in<br>Phone: +91 98765 43210</p>
+      <p class="mt-6">We typically respond within 24–48 hours.</p>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="bg-white py-16 px-6">
+    <h2 class="serif text-3xl text-center mb-12">Our Team</h2>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+      <div>
+        <h3 class="serif text-xl font-semibold">Kartikey Nigam</h3>
+        <p class="text-sm">Creative Director & Co-Founder</p>
+      </div>
+      <div>
+        <h3 class="serif text-xl font-semibold">Tushar Nigam</h3>
+        <p class="text-sm">Operations & Production</p>
+      </div>
+      <div>
+        <h3 class="serif text-xl font-semibold">Mahima Nigam</h3>
+        <p class="text-sm">Brand & Visual Strategy</p>
+      </div>
+      <div>
+        <h3 class="serif text-xl font-semibold">Shivansh Nigam</h3>
+        <p class="text-sm">Technical Head</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
+    <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+  </footer>
+</body>
+</html>
