@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Maison Veré</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF5F2] text-[#4B2E2A]">
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="home.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="shop.html" class="hover:underline font-semibold">Shop</a>
+      <a href="#" class="hover:underline">Journal</a>
+      <a href="#" class="hover:underline">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Shop Header -->
+  <section class="text-center py-16">
+    <h1 class="serif text-5xl font-bold mb-4">The Collection</h1>
+    <p class="max-w-xl mx-auto text-lg italic">Crafted to last. Designed to matter.</p>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="px-6 pb-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="bg-white rounded-2xl shadow overflow-hidden">
+      <img src="bag1.jpg" alt="Bag 1" class="w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="serif text-xl mb-2">The Heritage Satchel</h2>
+        <p class="text-sm mb-2">₹13,999</p>
+        <a href="#" class="text-sm underline text-[#4B2E2A]">View Details</a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow overflow-hidden">
+      <img src="bag2.jpg" alt="Bag 2" class="w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="serif text-xl mb-2">The Artisan Tote</h2>
+        <p class="text-sm mb-2">₹11,499</p>
+        <a href="#" class="text-sm underline text-[#4B2E2A]">View Details</a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow overflow-hidden">
+      <img src="bag3.jpg" alt="Bag 3" class="w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="serif text-xl mb-2">The Studio Brief</h2>
+        <p class="text-sm mb-2">₹12,299</p>
+        <a href="#" class="text-sm underline text-[#4B2E2A]">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
+    <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+  </footer>
+</body>
+</html>
