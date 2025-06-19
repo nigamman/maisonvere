@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison Veré | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF5F2] text-[#4B2E2A]">
+  <!-- Header with Logo -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
+    <img src="demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="#" class="hover:underline">Home</a>
+      <a href="#" class="hover:underline">About</a>
+      <a href="#" class="hover:underline">Shop</a>
+      <a href="#" class="hover:underline">Journal</a>
+      <a href="#" class="hover:underline">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="h-screen flex flex-col items-center justify-center text-center px-6">
+    <img src="demo.png" alt="Maison Veré Logo" class="h-24 md:h-32 mb-6">
+    <p class="text-lg md:text-xl italic max-w-xl">You don’t carry it. You carry yourself.</p>
+  </section>
+
+  <!-- Manifesto Section -->
+  <section class="px-6 py-20 bg-[#EFE8E2] text-center">
+    <h2 class="serif text-3xl md:text-4xl font-semibold mb-6">Our Manifesto</h2>
+    <p class="max-w-3xl mx-auto text-lg leading-8">
+      We believe true luxury doesn't shout — it lingers. It's not about more. It's about meaning.<br />
+      We are for the minimalists, the dreamers, the doers.<br />
+      For those who enter rooms quietly... but are remembered loud.
+    </p>
+  </section>
+
+  <!-- Product Teaser Section -->
+  <section class="px-6 py-16">
+    <h2 class="serif text-3xl mb-8 text-center">Explore the Collection</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+        <img src="bag1.jpg" alt="Bag 1" class="w-full h-80 object-cover">
+        <div class="p-4">
+          <h3 class="serif text-xl mb-2">The Heritage Satchel</h3>
+          <p class="text-sm">Crafted from full-grain leather with brass hardware.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+        <img src="bag2.jpg" alt="Bag 2" class="w-full h-80 object-cover">
+        <div class="p-4">
+          <h3 class="serif text-xl mb-2">The Artisan Tote</h3>
+          <p class="text-sm">Minimalist structure with timeless curves.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+        <img src="bag3.jpg" alt="Bag 3" class="w-full h-80 object-cover">
+        <div class="p-4">
+          <h3 class="serif text-xl mb-2">The Studio Brief</h3>
+          <p class="text-sm">Designed for work and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <footer class="bg-[#4B2E2A] text-white text-center py-8">
+    <img src="demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
+    <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
+  </footer>
+</body>
+</html>
