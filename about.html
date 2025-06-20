@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Maison Veré</title>
+
+  <!-- Fonts, Tailwind & AOS -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles/animations.css">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -16,44 +18,48 @@
     h1, h2, h3, .serif {
       font-family: 'Cormorant Garamond', serif;
     }
+    .body-lock {
+      overflow: hidden;
+      height: 100vh;
+    }
   </style>
 </head>
+
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
-<!-- Header -->
-<!-- Header with Mobile Menu Toggle -->
-<header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2] relative z-50">
-  <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
-  <nav class="hidden md:flex gap-6 text-sm">
-    <a href="index.html" class="hover:underline">Home</a>
-    <a href="about.html" class="hover:underline font-semibold">About</a>
-    <a href="shop.html" class="hover:underline">Shop</a>
-    <a href="journal.html" class="hover:underline">Journal</a>
-    <a href="contact.html" class="hover:underline">Contact</a>
-  </nav>
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2] relative z-50">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline font-semibold">About</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="journal.html" class="hover:underline">Journal</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+    </nav>
 
-  <!-- Hamburger Icon -->
-  <button id="menu-toggle" class="md:hidden focus:outline-none">
-    <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-  </button>
-</header>
+    <!-- Hamburger Icon -->
+    <button id="menu-toggle" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </header>
 
-<!-- Mobile Fullscreen Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-[#FAF5F2] text-[#4B2E2A] flex-col items-center justify-center hidden md:hidden transition-all duration-300 ease-in-out">
-  <button id="menu-close" class="absolute top-6 right-6">
-    <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-    </svg>
-  </button>
-  <nav class="flex flex-col gap-6 text-xl font-medium serif mt-20">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="shop.html">Shop</a>
-    <a href="journal.html">Journal</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</div>
+  <!-- Mobile Fullscreen Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-[#FAF5F2]/80 backdrop-blur-md text-[#4B2E2A] flex-col items-center justify-center hidden md:hidden transition-all duration-300 ease-in-out">
+    <button id="menu-close" class="absolute top-6 right-6">
+      <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <nav class="flex flex-col gap-6 text-xl font-medium serif mt-20">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
   <!-- Hero Section -->
   <section class="bg-[#EFE8E2] py-24 px-6 text-center" data-aos="fade-up">
@@ -75,19 +81,19 @@
     </p>
   </section>
 
-  <!-- Pillar Section -->
+  <!-- Pillars Section -->
   <section class="px-6 py-16 bg-white" data-aos="fade-up" data-aos-delay="200">
     <h2 class="serif text-3xl text-center mb-12">Why Maison Veré</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-      <div class="fade-in-up" data-aos="zoom-in">
+      <div data-aos="zoom-in">
         <h3 class="serif text-xl mb-2">Real Grain Leather</h3>
         <p class="text-sm">We use only full-grain hides for natural character and longevity.</p>
       </div>
-      <div class="fade-in-up" data-aos="zoom-in" data-aos-delay="100">
+      <div data-aos="zoom-in" data-aos-delay="100">
         <h3 class="serif text-xl mb-2">Solid Brass Hardware</h3>
         <p class="text-sm">Every clasp, buckle, and rivet is built to age beautifully.</p>
       </div>
-      <div class="fade-in-up" data-aos="zoom-in" data-aos-delay="200">
+      <div data-aos="zoom-in" data-aos-delay="200">
         <h3 class="serif text-xl mb-2">Timeless Craft</h3>
         <p class="text-sm">Designed not just for seasons, but for generations.</p>
       </div>
@@ -96,10 +102,8 @@
 
   <!-- Quote Section -->
   <section class="px-6 py-24 bg-[#F2E8DE] text-[#4B2E2A] text-center" data-aos="fade-up">
-  <blockquote class="serif text-3xl italic max-w-3xl mx-auto">“This is not fast fashion. This is Maison Veré.”</blockquote>
+    <blockquote class="serif text-3xl italic max-w-3xl mx-auto">“This is not fast fashion. This is Maison Veré.”</blockquote>
   </section>
-
-
 
   <!-- Footer -->
   <footer class="bg-[#4B2E2A] text-white text-center py-8" data-aos="fade-up">
@@ -116,22 +120,25 @@
       once: true
     });
   </script>
-   <!-- Mobile Menu Toggle Script -->
+
+  <!-- Mobile Menu Toggle Script -->
   <script>
     const toggleBtn = document.getElementById('menu-toggle');
     const closeBtn = document.getElementById('menu-close');
     const menu = document.getElementById('mobile-menu');
+    const body = document.body;
 
     toggleBtn.addEventListener('click', () => {
       menu.classList.remove('hidden');
       menu.classList.add('flex');
+      body.classList.add('body-lock');
     });
 
     closeBtn.addEventListener('click', () => {
       menu.classList.remove('flex');
       menu.classList.add('hidden');
+      body.classList.remove('body-lock');
     });
   </script>
-
 </body>
 </html>

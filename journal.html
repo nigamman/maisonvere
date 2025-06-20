@@ -30,45 +30,49 @@
       transform: rotateY(6deg) rotateX(3deg) scale(1.015);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
+    .body-lock {
+      overflow: hidden;
+      height: 100vh;
+    }
   </style>
 </head>
 
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
-   <!-- Header -->
-<!-- Header with Mobile Menu Toggle -->
-<header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2] relative z-50">
-  <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
-  <nav class="hidden md:flex gap-6 text-sm">
-    <a href="index.html" class="hover:underline">Home</a>
-    <a href="about.html" class="hover:underline">About</a>
-    <a href="shop.html" class="hover:underline">Shop</a>
-    <a href="journal.html" class="hover:underline font-semibold">Journal</a>
-    <a href="contact.html" class="hover:underline">Contact</a>
-  </nav>
 
-  <!-- Hamburger Icon -->
-  <button id="menu-toggle" class="md:hidden focus:outline-none">
-    <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-  </button>
-</header>
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2] relative z-50">
+    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="journal.html" class="hover:underline font-semibold">Journal</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+    </nav>
 
-<!-- Mobile Fullscreen Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-[#FAF5F2] text-[#4B2E2A] flex-col items-center justify-center hidden md:hidden transition-all duration-300 ease-in-out">
-  <button id="menu-close" class="absolute top-6 right-6">
-    <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-    </svg>
-  </button>
-  <nav class="flex flex-col gap-6 text-xl font-medium serif mt-20">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="shop.html">Shop</a>
-    <a href="journal.html">Journal</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</div>
+    <!-- Hamburger Icon -->
+    <button id="menu-toggle" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Mobile Fullscreen Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-[#FAF5F2]/80 backdrop-blur-md text-[#4B2E2A] flex-col items-center justify-center hidden md:hidden transition-all duration-300 ease-in-out">
+    <button id="menu-close" class="absolute top-6 right-6">
+      <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <nav class="flex flex-col gap-6 text-xl font-medium serif mt-20">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
   <!-- Hero Section -->
   <section class="text-center py-20 bg-[#EFE8E2]" data-aos="fade-up">
@@ -119,20 +123,24 @@
       once: true
     });
   </script>
-   <!-- Mobile Menu Toggle Script -->
+
+  <!-- Mobile Menu Script -->
   <script>
     const toggleBtn = document.getElementById('menu-toggle');
     const closeBtn = document.getElementById('menu-close');
     const menu = document.getElementById('mobile-menu');
+    const body = document.body;
 
     toggleBtn.addEventListener('click', () => {
       menu.classList.remove('hidden');
       menu.classList.add('flex');
+      body.classList.add('body-lock');
     });
 
     closeBtn.addEventListener('click', () => {
       menu.classList.remove('flex');
       menu.classList.add('hidden');
+      body.classList.remove('body-lock');
     });
   </script>
 </body>
