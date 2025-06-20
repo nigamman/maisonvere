@@ -40,16 +40,33 @@
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]" data-aos="fade-down">
-    <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
-    <nav class="hidden md:flex gap-6 text-sm">
-      <a href="index.html" class="hover:underline font-semibold">Home</a>
-      <a href="about.html" class="hover:underline">About</a>
-      <a href="shop.html" class="hover:underline">Shop</a>
-      <a href="journal.html" class="hover:underline">Journal</a>
-      <a href="contact.html" class="hover:underline">Contact</a>
-    </nav>
-  </header>
+<header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]" data-aos="fade-down">
+  <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden md:flex gap-6 text-sm">
+    <a href="index.html" class="hover:underline font-semibold">Home</a>
+    <a href="about.html" class="hover:underline">About</a>
+    <a href="shop.html" class="hover:underline">Shop</a>
+    <a href="journal.html" class="hover:underline">Journal</a>
+    <a href="contact.html" class="hover:underline">Contact</a>
+  </nav>
+
+  <!-- Hamburger Icon (Mobile Only) -->
+  <div class="md:hidden">
+    <button id="menu-toggle" class="text-3xl focus:outline-none">☰</button>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<div id="mobile-menu" class="hidden flex-col bg-[#FAF5F2] px-6 py-4 text-sm space-y-2 md:hidden">
+  <a href="index.html" class="hover:underline font-semibold">Home</a>
+  <a href="about.html" class="hover:underline">About</a>
+  <a href="shop.html" class="hover:underline">Shop</a>
+  <a href="journal.html" class="hover:underline">Journal</a>
+  <a href="contact.html" class="hover:underline">Contact</a>
+</div>
+
 
   <!-- Hero Section -->
   <section class="hero-bg h-screen flex flex-col justify-center items-center text-center text-white px-6 relative">
@@ -114,5 +131,16 @@
       once: true
     });
   </script>
+  
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
 </body>
 </html>
