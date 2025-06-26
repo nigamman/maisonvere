@@ -78,7 +78,9 @@
         <li>Cotton-lined interior with laptop compartment</li>
         <li>Designed in Kanpur. Inspired by Paris.</li>
       </ul>
-      <button class="bg-[#4B2E2A] text-white px-6 py-3 text-sm rounded-xl w-fit hover:opacity-90">Add to Bag</button>
+      <button id="addToCartBtn" class="bg-[#4B2E2A] text-white px-6 py-3 text-sm rounded-xl w-fit hover:opacity-90">
+        Add to Bag
+      </button>
     </div>
   </section>
 
@@ -107,6 +109,32 @@
       menu.classList.add('hidden');
       body.classList.remove('body-lock');
     });
+  </script>
+
+  <!-- Add to Cart Script -->
+  <script>
+    document.querySelector('button').addEventListener('click', () => {
+      const item = {
+        id: 'heritage-satchel',
+        name: 'The Heritage Satchel',
+        price: 13999,
+        image: 'images/bag1.png',
+        quantity: 1
+      };
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(p => p.id === item.id);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push(item);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.href = 'cart.html'; // redirect to cart
+    });
+    
   </script>
 
 </body>

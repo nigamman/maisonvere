@@ -1,0 +1,55 @@
+<!-- 📁 public/register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | Maison Veré</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#FAF5F2] flex justify-center items-center h-screen">
+  <form id="registerForm" class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
+    <input type="text" placeholder="Name" id="name" class="mb-4 p-2 w-full border rounded" required />
+    <input type="email" placeholder="Email" id="email" class="mb-4 p-2 w-full border rounded" required />
+    <input type="password" placeholder="Password" id="password" class="mb-4 p-2 w-full border rounded" required />
+    <button type="submit" class="w-full bg-[#4B2E2A] text-white py-2 rounded">Register</button>
+    <p class="text-sm mt-4 text-center">Already have an account? <a href="login.html" class="underline text-[#4B2E2A]">Login</a></p>
+  </form>
+
+  <!-- Firebase SDK + Auth -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyANLlUEYXHsrPoIh7LnqT14KVfFQqDwFnc",
+      authDomain: "maison-vere.firebaseapp.com",
+      projectId: "maison-vere",
+      storageBucket: "maison-vere.firebasestorage.app",
+      messagingSenderId: "862693172095",
+      appId: "1:862693172095:web:7733e94bcd76979ff9f04a",
+      measurementId: "G-XZDB9HR29J"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: name });
+        localStorage.setItem('token', await userCredential.user.getIdToken());
+        alert("Registered successfully");
+        window.location.href = 'shop.html';
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+  </script>
+</body>
+</html>

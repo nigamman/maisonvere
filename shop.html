@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | Maison Veré</title>
+  <title>Maison Veré | Shop</title>
 
   <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -88,40 +88,9 @@
     <p class="max-w-xl mx-auto text-lg italic">Crafted to last. Designed to matter.</p>
   </section>
 
-  <!-- Product Grid -->
-  <section class="px-6 pb-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="card bg-white rounded-2xl shadow overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-      <a href="images/bag1.png" data-lightbox="bags" data-title="The Heritage Satchel">
-        <img src="images/bag1.png" alt="Bag 1" class="w-full h-80 object-cover">
-      </a>
-      <div class="p-4">
-        <h2 class="serif text-xl mb-2">The Heritage Satchel</h2>
-        <p class="text-sm mb-2">₹13,999</p>
-        <a href="product.html" class="text-sm underline text-[#4B2E2A] hover:text-[#2f1a18] transition-colors">View Details</a>
-      </div>
-    </div>
-
-    <div class="card bg-white rounded-2xl shadow overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-      <a href="images/bag2.png" data-lightbox="bags" data-title="The Artisan Tote">
-        <img src="images/bag2.png" alt="Bag 2" class="w-full h-80 object-cover">
-      </a>
-      <div class="p-4">
-        <h2 class="serif text-xl mb-2">The Artisan Tote</h2>
-        <p class="text-sm mb-2">₹11,499</p>
-        <a href="product.html" class="text-sm underline text-[#4B2E2A] hover:text-[#2f1a18] transition-colors">View Details</a>
-      </div>
-    </div>
-
-    <div class="card bg-white rounded-2xl shadow overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
-      <a href="images/bag3.png" data-lightbox="bags" data-title="The Studio Brief">
-        <img src="images/bag3.png" alt="Bag 3" class="w-full h-80 object-cover">
-      </a>
-      <div class="p-4">
-        <h2 class="serif text-xl mb-2">The Studio Brief</h2>
-        <p class="text-sm mb-2">₹12,299</p>
-        <a href="product.html" class="text-sm underline text-[#4B2E2A] hover:text-[#2f1a18] transition-colors">View Details</a>
-      </div>
-    </div>
+  <!-- Dynamic Product Grid -->
+  <section id="product-container" class="px-6 pb-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- Products will be inserted here dynamically -->
   </section>
 
   <!-- Footer -->
@@ -159,6 +128,9 @@
       body.classList.remove('body-lock');
     });
   </script>
+
+  <!-- Product Loader -->
+  <script src="script.js"></script>
 
 </body>
 </html>

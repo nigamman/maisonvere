@@ -1,3 +1,4 @@
+<!-- Paste this full index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,6 +53,10 @@
       <a href="shop.html" class="hover:underline">Shop</a>
       <a href="journal.html" class="hover:underline">Journal</a>
       <a href="contact.html" class="hover:underline">Contact</a>
+
+      <!-- Auth Buttons -->
+      <a href="login.html" class="ml-4 px-4 py-1 border border-[#4B2E2A] rounded-full text-[#4B2E2A] hover:bg-[#4B2E2A] hover:text-white transition">Login</a>
+      <a href="register.html" class="ml-2 px-4 py-1 bg-[#4B2E2A] text-white rounded-full hover:bg-[#361c1a] transition">Signup</a>
     </nav>
 
     <!-- Hamburger Icon -->
@@ -62,7 +67,7 @@
     </button>
   </header>
 
-  <!-- Mobile Fullscreen Menu -->
+  <!-- Mobile Menu -->
   <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-[#FAF5F2]/80 backdrop-blur-md text-[#4B2E2A] flex-col items-center justify-center hidden md:hidden transition-all duration-300 ease-in-out">
     <button id="menu-close" class="absolute top-6 right-6">
       <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
@@ -75,6 +80,12 @@
       <a href="shop.html">Shop</a>
       <a href="journal.html">Journal</a>
       <a href="contact.html">Contact</a>
+
+      <!-- Mobile Auth Buttons -->
+      <div class="flex flex-col gap-4 mt-10">
+        <a href="login.html" class="text-[#4B2E2A] underline">Login</a>
+        <a href="register.html" class="text-white bg-[#4B2E2A] px-4 py-2 rounded-full">Signup</a>
+      </div>
     </nav>
   </div>
 
@@ -98,31 +109,11 @@
     </p>
   </section>
 
-  <!-- Product Teaser Section -->
+  <!-- Dynamic Product Teaser -->
   <section class="px-6 py-16">
     <h2 class="serif text-3xl mb-8 text-center" data-aos="fade-up">Explore the Collection</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden" data-aos="zoom-in">
-        <img src="images/bag1.png" alt="Bag 1" class="w-full h-80 object-cover">
-        <div class="p-4">
-          <h3 class="serif text-xl mb-2">The Heritage Satchel</h3>
-          <p class="text-sm">Crafted from full-grain leather with brass hardware.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-        <img src="images/bag2.png" alt="Bag 2" class="w-full h-80 object-cover">
-        <div class="p-4">
-          <h3 class="serif text-xl mb-2">The Artisan Tote</h3>
-          <p class="text-sm">Minimalist structure with timeless curves.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-        <img src="images/bag3.png" alt="Bag 3" class="w-full h-80 object-cover">
-        <div class="p-4">
-          <h3 class="serif text-xl mb-2">The Studio Brief</h3>
-          <p class="text-sm">Designed for work and beyond.</p>
-        </div>
-      </div>
+    <div id="product-teaser-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Dynamic products will load here -->
     </div>
   </section>
 
@@ -142,7 +133,7 @@
     });
   </script>
 
-  <!-- Mobile Menu Toggle Script -->
+  <!-- Mobile Menu Script -->
   <script>
     const toggleBtn = document.getElementById('menu-toggle');
     const closeBtn = document.getElementById('menu-close');
@@ -160,6 +151,34 @@
       menu.classList.add('hidden');
       body.classList.remove('body-lock');
     });
+  </script>
+
+  <!-- Dynamic Product Teaser Script -->
+  <script>
+    fetch("http://localhost:5000/api/products")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("product-teaser-container");
+        const teaser = data.slice(0, 3); // Show only first 3 products
+
+        teaser.forEach((product, index) => {
+          const card = document.createElement("div");
+          card.className = "bg-white rounded-2xl shadow-md overflow-hidden";
+          card.setAttribute("data-aos", "zoom-in");
+          card.setAttribute("data-aos-delay", `${index * 100}`);
+
+          card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="w-full h-80 object-cover">
+            <div class="p-4">
+              <h3 class="serif text-xl mb-2">${product.name}</h3>
+              <p class="text-sm">${product.description}</p>
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      })
+      .catch(err => console.error("Error loading teaser products:", err));
   </script>
 </body>
 </html>
