@@ -7,15 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    h1, h2, h3, .serif {
-      font-family: 'Cormorant Garamond', serif;
-    }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
   </style>
 </head>
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
+
+  <!-- Header -->
   <header class="flex justify-between items-center px-6 py-4 bg-[#FAF5F2]">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-12 md:h-16">
     <nav class="hidden md:flex gap-6 text-sm">
@@ -27,72 +25,136 @@
     </nav>
   </header>
 
+  <!-- Cart Section -->
   <section class="px-6 py-12 max-w-4xl mx-auto">
     <h1 class="serif text-3xl font-bold mb-8 text-center">Your Cart</h1>
     <div id="cartItems" class="space-y-6"></div>
 
     <div class="flex justify-between items-center mt-10">
-      <h2 class="text-xl font-semibold">Total: <span id="totalPrice">0</span></h2>
+      <h2 class="text-xl font-semibold">Total: ₹<span id="totalPrice">0</span></h2>
       <button id="checkoutBtn" class="bg-[#4B2E2A] text-white px-6 py-2 rounded hover:opacity-90">Proceed to Pay</button>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="bg-[#4B2E2A] text-white text-center py-8">
     <img src="images/demo.png" alt="Maison Veré Logo" class="h-10 mx-auto mb-4">
     <p class="text-sm">Rooted in legacy. Designed for those who endure.</p>
     <p class="text-xs mt-2 opacity-50">© Maison Veré 2025. All rights reserved.</p>
   </footer>
 
-  <script>
-  function renderCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartItems = document.getElementById('cart-items');
-    const totalAmount = document.getElementById('total-amount');
-    cartItems.innerHTML = '';
-    let total = 0;
+  <!-- Firebase Auth -->
+  <script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-    cart.forEach((item, index) => {
-      if (typeof item.quantity !== 'number') item.quantity = 1;
-      const itemTotal = item.price * item.quantity;
-      total += itemTotal;
+    const firebaseConfig = {
+      apiKey: "AIzaSyANLlUEYXHsrPoIh7LnqT14KVfFQqDwFnc",
+      authDomain: "maison-vere.firebaseapp.com",
+      projectId: "maison-vere",
+      storageBucket: "maison-vere.appspot.com",
+      messagingSenderId: "862693172095",
+      appId: "1:862693172095:web:7733e94bcd76979ff9f04a"
+    };
 
-      const div = document.createElement('div');
-      div.className = 'flex justify-between items-center border-b pb-4';
-      div.innerHTML = `
-        <div>
-          <h3 class="serif text-xl font-semibold">${item.name}</h3>
-          <p class="text-sm">₹${item.price} x ${item.quantity} = ₹${itemTotal}</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <button class="px-2 bg-gray-200" onclick="updateQty(${index}, -1)">-</button>
-          <span>${item.quantity}</span>
-          <button class="px-2 bg-gray-200" onclick="updateQty(${index}, 1)">+</button>
-          <button class="ml-2 text-red-500" onclick="removeItem(${index})">Remove</button>
-        </div>
-      `;
-      cartItems.appendChild(div);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    let currentUser = null;
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUser = user;
+        await loadCartFromDB(user.uid);
+      } else {
+        renderCart(); // fallback for guests
+      }
     });
 
-    totalAmount.innerText = total;
-  }
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const cartItems = document.getElementById("cartItems");
+      const totalAmount = document.getElementById("totalPrice");
+      cartItems.innerHTML = '';
+      let total = 0;
 
-  function updateQty(index, delta) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart[index].quantity += delta;
-    if (cart[index].quantity <= 0) cart[index].quantity = 1;
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
-  }
+      cart.forEach((item, index) => {
+        item.quantity = item.quantity || 1;
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
 
-  function removeItem(index) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
-  }
+        const div = document.createElement("div");
+        div.className = "flex gap-4 items-center border-b pb-4";
+        div.innerHTML = `
+          <img src="${item.image}" class="w-24 h-24 object-cover rounded shadow border" />
+          <div class="flex-1">
+            <h3 class="serif text-xl font-semibold">${item.name}</h3>
+            <p class="text-sm">₹${item.price} x ${item.quantity} = ₹${itemTotal}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="updateQty(${index}, -1)">-</button>
+            <span>${item.quantity}</span>
+            <button onclick="updateQty(${index}, 1)">+</button>
+            <button onclick="removeItem(${index})" class="text-red-500 ml-2">Remove</button>
+          </div>
+        `;
+        cartItems.appendChild(div);
+      });
 
-  renderCart();
-</script>
+      totalAmount.innerText = total;
+    }
+
+    window.updateQty = function(index, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) cart[index].quantity = 1;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+      if (currentUser) syncCartToDB(currentUser.uid);
+    };
+
+    window.removeItem = function(index) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+      if (currentUser) syncCartToDB(currentUser.uid);
+    };
+
+    async function syncCartToDB(userId) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      try {
+        await fetch("http://localhost:5000/api/cart/save", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, items: cart })
+        });
+      } catch (err) {
+        console.error("❌ Sync failed:", err);
+      }
+    }
+
+    async function loadCartFromDB(userId) {
+      try {
+        const res = await fetch(`http://localhost:5000/api/cart/${userId}`);
+        const data = await res.json();
+        if (data?.items) {
+          localStorage.setItem("cart", JSON.stringify(data.items));
+        }
+      } catch (err) {
+        console.error("❌ Failed to load cart:", err);
+      }
+      renderCart();
+    }
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      if (!currentUser) {
+        alert("Please login to proceed to checkout.");
+        window.location.href = "login.html";
+      } else {
+        alert("Payment integration coming soon...");
+      }
+    });
+  </script>
 
 </body>
 </html>

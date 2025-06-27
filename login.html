@@ -10,11 +10,17 @@
 <body class="bg-[#FAF5F2] flex justify-center items-center h-screen">
   <form id="loginForm" class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+    
     <input type="email" placeholder="Email" id="email" class="mb-4 p-2 w-full border rounded" required />
     <input type="password" placeholder="Password" id="password" class="mb-4 p-2 w-full border rounded" required />
+    
     <button type="submit" class="w-full bg-[#4B2E2A] text-white py-2 rounded">Login</button>
+    
     <button type="button" id="googleLogin" class="w-full mt-2 bg-red-600 text-white py-2 rounded">Login with Google</button>
-    <p class="text-sm mt-4 text-center">Don't have an account? <a href="register.html" class="underline text-[#4B2E2A]">Register</a></p>
+    
+    <p class="text-sm mt-4 text-center">Don't have an account? 
+      <a href="register.html" class="underline text-[#4B2E2A]">Register</a>
+    </p>
   </form>
 
   <!-- Firebase + Auth SDKs -->
@@ -22,11 +28,12 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
+    // 🔧 Your Firebase Project Config
     const firebaseConfig = {
       apiKey: "AIzaSyANLlUEYXHsrPoIh7LnqT14KVfFQqDwFnc",
       authDomain: "maison-vere.firebaseapp.com",
       projectId: "maison-vere",
-      storageBucket: "maison-vere.firebasestorage.app",
+      storageBucket: "maison-vere.appspot.com",
       messagingSenderId: "862693172095",
       appId: "1:862693172095:web:7733e94bcd76979ff9f04a",
       measurementId: "G-XZDB9HR29J"
@@ -36,13 +43,16 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
+    // 📧 Email/Password Login
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        localStorage.setItem('token', await userCredential.user.getIdToken());
+        const token = await userCredential.user.getIdToken();
+
+        localStorage.setItem('token', token);
         alert("Logged in successfully");
         window.location.href = 'shop.html';
       } catch (error) {
@@ -50,10 +60,28 @@
       }
     });
 
+    // 🔐 Google Login + Backend Sync
     document.getElementById('googleLogin').addEventListener('click', async () => {
       try {
         const result = await signInWithPopup(auth, provider);
-        localStorage.setItem('token', await result.user.getIdToken());
+        const user = result.user;
+
+        // Sync with your backend
+        await fetch("http://localhost:5000/api/users/firebase", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL
+          })
+        });
+
+        // Save Firebase token
+        const token = await user.getIdToken();
+        localStorage.setItem('token', token);
+
         alert("Google Login Successful");
         window.location.href = 'shop.html';
       } catch (error) {

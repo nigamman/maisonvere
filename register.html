@@ -50,6 +50,35 @@
         alert(error.message);
       }
     });
+    
+    // 🔐 Google Login + Backend Sync
+    document.getElementById('googleLogin').addEventListener('click', async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        // Sync with your backend
+        await fetch("http://localhost:5000/api/users/firebase", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL
+          })
+        });
+
+        // Save Firebase token
+        const token = await user.getIdToken();
+        localStorage.setItem('token', token);
+
+        alert("Google Login Successful");
+        window.location.href = 'shop.html';
+      } catch (error) {
+        alert(error.message);
+      }
+    });
   </script>
 </body>
 </html>

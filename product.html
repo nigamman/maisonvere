@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heritage Satchel | Maison Veré</title>
-
-  <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -23,7 +20,6 @@
     }
   </style>
 </head>
-
 <body class="bg-[#FAF5F2] text-[#4B2E2A]">
 
   <!-- Header -->
@@ -45,7 +41,7 @@
     </button>
   </header>
 
-  <!-- Mobile Fullscreen Menu -->
+  <!-- Mobile Menu -->
   <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-[#FAF5F2]/80 backdrop-blur-md text-[#4B2E2A] flex-col items-center justify-center hidden md:hidden transition-all duration-300 ease-in-out">
     <button id="menu-close" class="absolute top-6 right-6">
       <svg class="w-6 h-6" fill="none" stroke="#4B2E2A" stroke-width="2" viewBox="0 0 24 24">
@@ -61,7 +57,7 @@
     </nav>
   </div>
 
-  <!-- Product Detail Section -->
+  <!-- Product Section -->
   <section class="px-6 py-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
     <div>
       <img src="images/bag1.png" alt="The Heritage Satchel" class="w-full h-auto rounded-xl shadow" />
@@ -91,8 +87,9 @@
     <p class="text-xs mt-2 opacity-50">© Maison Veré 2025. All rights reserved.</p>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- Scripts -->
   <script>
+    // Mobile Menu Toggle
     const toggleBtn = document.getElementById('menu-toggle');
     const closeBtn = document.getElementById('menu-close');
     const menu = document.getElementById('mobile-menu');
@@ -109,11 +106,9 @@
       menu.classList.add('hidden');
       body.classList.remove('body-lock');
     });
-  </script>
 
-  <!-- Add to Cart Script -->
-  <script>
-    document.querySelector('button').addEventListener('click', () => {
+    // Add to Cart
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
       const item = {
         id: 'heritage-satchel',
         name: 'The Heritage Satchel',
@@ -132,9 +127,8 @@
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
-      window.location.href = 'cart.html'; // redirect to cart
+      window.location.href = 'cart.html';
     });
-    
   </script>
 
 </body>
